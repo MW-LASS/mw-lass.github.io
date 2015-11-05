@@ -55,7 +55,7 @@
 												<li><a href="https://joinup.ec.europa.eu/sites/default/files/D7.1.3%20-%20Study%20on%20persistent%20URIs_0.pdf">United Kingdom</a></li>
 												<li><a href="https://github.com/AGLDWG/TR/wiki/URI-Guidelines-for-publishing-linked-datasets-on-data.gov.au-v0.1">Australia</a></li>
 												<li><a href="https://joinup.ec.europa.eu/sites/default/files/D7.1.3%20-%20Study%20on%20persistent%20URIs_0.pdf">Survey of other countries</a></li>
-												<li><a href="http://joinup.ec.europa.eu/site/core_vocabularies/persistent_URIs/Towards-a-common-approach-for-the-management-of-persistent-URIs-by-EU-institutions_v.0.53.pdf">EU Study: Common URI Policy</a></li> 												
+												<li><a href="http://joinup.ec.europa.eu/site/core_vocabularies/persistent_URIs/Towards-a-common-approach-for-the-management-of-persistent-URIs-by-EU-institutions_v.0.53.pdf">EU Study: Common URI Policy</a></li> 
 											</ul>
 										</section>
 										<section>
@@ -78,73 +78,46 @@
 									<!-- Main Content -->
 										<section>
 											<header>
-												<h2>URI Principles</h2>
+												<h2>URI Patterns</h2>
 											</header>
-											<h3>W3C Linked Data Principles</h3>
-											    <p>
-												URIs underpin linked data, so without URIs, users would not have the capability of following links 
-												to other related resouces on the Web.  Tim Berners-Lee identified four main principles when applying linked data:  
-												<a href="http://www.w3.org/DesignIssues/LinkedData.html"> Read more...</a>
-												<ul>
-													<li>1. Use URIs as names for things</li>
-													<li>2. Use HTTP URIs so that people can look up those names.</li>
-													<li>3. When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL).</li>
-													<li>4. Include links to other URIs. so that they can discover more things.
-												</ul>
-											</p>
-											<p><h3>General Design Principles</h3>
-												The following table identifies additional specific design principles for publishing linked data based on experience gained from the Australian
-												Government's Guide for URIs. 
-												<table>
+											<p><h3>Basic Pattern Template</h3>
+											The following identifies the elements within a URI and forms the basic pattern using 'data.mw.org.nz':
+											<p></p>
+											<h2>http://<font color="blue">data.mw.org.nz</font>/<font color="red">{type}</font>/<font color="green">{concept}
+													</font>/<font color="purple">{reference}</font></h2>
+											<br>
+												<table width="100%">
+
 													<tr>
-														<td width="20">10</td>
-														<td>Provide a human-readable representation in HTML at the Dataset URI.</td>
-														<td>MUST</td>
+														<td><h3>Real-World 'Thing'</h3></td><td></td>
+														<td><h3>http://data.mw.org.nz/<font color="red">id</font>/{concept}/{reference}</h3></td></tr>
+														<tr><td><h3>/id</h3></td><td></td>
+														<td>http://data.mw.org.nz/id/cemetery/MtView<td>
 													</tr>
+														<tr><td></td><td>Redirects to document</td>
+														<td>http://data.mw.org.nz/doc/cemetery/MtView [303 See Other]<td>
+													</tr>													
+													<tr><td>-</td><td>-</td><td>-</td></tr>	
 													<tr>
-														<td>11</td>
-														<td>If multiple representations exist, provide a means of discovering specific URIs for each of the available representations.</td>
-														<td>SHOULD</td>
+														<td><h3>Document/Data</h3></td>
+														<td></td><td><h3>http://data.mw.org.nz/<font color="red">doc</font>/{concept}/{reference}</h3></td><td></td></tr>
+														<tr><td><h3>/doc</h3></td><td>Vocabulary</td><td>http://data.mw.org.nz/doc/cemetery/MtView >></td></tr>
+														<tr><td></td><td>>> Content Negotiation</td><td>http://data.mw.org.nz/doc/cemetery/MtView.html [human-readable]</td>
 													</tr>
+														<tr><td></td><td>>> Content Negotiation</td><td>http://data.mw.org.nz/doc/cemetery/MtView.rdf [computer-readable]</td>
+													</tr>
+													<tr><td>-</td><td>-</td><td>-</td></tr>	
 													<tr>
-														<td>12</td>
-														<td>The license for inspection or use of the Linked Dataset shall be provided using a common vocabularly and using NZGOAL.</td>
-														<td>SHOULD</td>
-													</tr>
-													<tr>
-														<td>13</td>
-														<td>The metadata for a Linked Dataset should be provided using a common vocabulary and contain the expected longevity and maintenance 
-														plans for the Dataset URI.</td>
-														<td>SHOULD</td>
-													</tr>
-													<tr>
-														<td>14</td>
-														<td>The current technical implementation of a data publication system should not be visible in or otherwise affect the URI for a Linked
-														Dataset. </td>
-														<td>SHOULD NOT</td>
-													</tr>
-												</table>	
-												<p>For more URI principles: <a href="https://github.com/AGLDWG/TR/wiki/URI-Guidelines-for-publishing-linked-datasets-on-data.gov.au-v0.1">Read more...</a>			
-												<p> <h3>10 Rules for persistent URIs</h3>
-												Based on a survey across EU agencies and services, EU Member States and standardisation bodies where management of URIs have
-												been subject to policy.  The best practices can be viewed as a <a href="https://joinup.ec.europa.eu/community/semic/document/10-rules-persistent-uris">
-												diagram</a> and summarised as: <a href="https://joinup.ec.europa.eu/sites/default/files/c0/7d/10/D7.1.3%20-%20Study%20on%20persistent%20URIs.pdf">Read full report.</a>
-											</p>
-											<p><ul class="link-list">DO
-													<li>1: Follow the pattern <font color="#606997">-- http://{domain}/{concept}/{type}/{reference}</font></li>
-													<li>2: Re-use existing identifiers <font color="#606997">-- http://data.govt.nz/environment/doc/1234</font></li>
-													<li>3: Link multiple representations <font color="#606997">-- http://data.govt.nz/environment/doc/1234.rdf | http://data.govt.nz/environment/doc/1234.html</font></li>
-													<li>4: Implement 303 redirects for real-world objects</li>
-													<li>5: Use a dedicated service <font color="#606997">i.e., independent of data orginator</font></li>
-												</ul>
-												<ul class="link-list">DON'T
-													<li>6: Avoid stating ownership <font color="#606997">-- http://data.govt.nz/environment/doc/HorizonsDC/</font></li>
-													<li>7: Avoid version numbers <font color="#606997">-- http://data.govt.nz/environment/doc/erosion/v0.1/1234</font></li>
-													<li>8: Avoid using auto-increment <font color="#606997">-- http://data.govt.nz/environment/doc/erosion/1234 & http://data.govt.nz/doc/environment/1235</font></li>
-													<li>9: Avoid query strings <font color="#606997">-- http://data.govt.nz/environment/doc/erosion?id=123456</font></li>
-													<li>10: Avoid file extensions <font color="#606997">--http://data.govt.nz/environment/doc/erosion/12345.csv</font></li>
-												</ul>
-											</p>
+														<td><h3>Ontology</h3></td><td></td><td><h3>http://data.mw.org.nz/<font color="red">def</font>/{concept}/{reference}</h3></td><td></td></tr>
+														<tr><td><h3>/def</h3></td><td>Vocabulary</td>
+														<td>http://data.mw.org.nz/def/cemetery</td>
+													<tr><td></td><td>Class</td><td>http://data.mw.org.nz/def/cemetery#Deceased</td></tr>
+													<tr><td></td><td>Property</td><td>http://data.mw.org.nz/def/cemetery/cemetery#hasPlot</td></tr>														
+													</tr>														
+												</table>
+												</p>
+											<p>More to come....</p>
+											
 										</section>
 
 								</div>
